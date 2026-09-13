@@ -1,0 +1,249 @@
+\documentclass[10pt, conference, final, twocolumn, sansserif]{IEEEtran}
+
+% --- LENGUAJE ---
+\usepackage[spanish]{babel}
+
+% --- TAMAÑO DE PAGINA Y MARGENES
+\usepackage[
+  a4paper,
+  top=2.5cm,
+  bottom=2cm,
+  left=2cm,
+  right=2cm,
+  marginparwidth=1.75cm,
+  headheight=35pt,
+  headsep=15pt,
+  footskip=20pt
+]{geometry}
+% Ancho de columna
+\setlength{\columnsep}{1cm}
+% Interlineado
+\linespread{1.0} % Interlineado sencillo
+\tolerance=1000 % Control de justificación limpia
+\emergencystretch=1em
+
+% --- PACKAGES ---
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{titlesec} % Para formato de titulos
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{textcomp}
+\usepackage{lmodern}
+\usepackage[colorlinks=true, allcolors=black]{hyperref}
+\usepackage{fancyhdr} % graficos encabezado
+\usepackage{tocloft} % Personalizar indice
+
+% --- FUENTE ---
+%\usepackage[sfdefault]{plex-sans}
+\usepackage[sfdefault]{sourcesanspro}
+\renewcommand{\familydefault}{\sfdefault}
+
+% --- CONFIGURACIÓN DE ENCABEZADO Y PIE DE PÁGINA ---
+\pagestyle{fancy}
+\fancyhf{} % Limpia todo
+
+% Configuración general (páginas 2 en adelante)
+\fancyhead[L]{\small Ingeniería Electrónica\\Proyecto Final}
+\fancyhead[C]{\raisebox{-0.2\height}{\includegraphics[height=1.2cm]{img/Logo_UTNFRA.png}}}
+\fancyhead[R]{\small Electrobisturí}
+\fancyfoot[R]{\thepage}
+
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0.4pt}
+
+% Redefinición para la primera página con \maketitle
+\fancypagestyle{IEEEtitlepagestyle}{
+  \fancyhf{}
+  \fancyhead[L]{\small Ingeniería Electrónica\\Proyecto Final}
+  \fancyhead[C]{\raisebox{-0.2\height}{\includegraphics[height=1.2cm]{img/Logo_UTNFRA.png}}}
+  \fancyhead[R]{\small Electrobisturí}
+  \fancyfoot[R]{\thepage}
+  \renewcommand{\headrulewidth}{0pt}
+  \renewcommand{\footrulewidth}{0.4pt}
+}
+
+% --- FORMATO INDICE ---
+% Poner titulo del indice en letra chica y negro
+\renewcommand{\cfttoctitlefont}{\Large\bfseries\color{black}\MakeUppercase}
+% Indentación de section (0em) y espacio para el número (1.8em)
+\cftsetindents{section}{0em}{1.5em}
+% Indentación de subsection (1em) y espacio para el número (2.2em)
+\cftsetindents{subsection}{0.5em}{2.2em}
+% Sacar los dos puntos ".." después del número del título
+% (Por defecto en babel spanish se agrega un punto/dos puntos después de la numeración)
+\addto\captionsspanish{
+  \def\postsection{}      % Elimina sufijo tras el número de sección en el texto
+  \def\postsubsection{}   % Elimina sufijo tras el número de subsección en el texto
+}
+\renewcommand{\cftsecaftersnum}{}    % Elimina sufijo tras el número de sección en el índice
+\renewcommand{\cftsubsecaftersnum}{} % Elimina sufijo tras el número de subsección en el índice
+% Colocar todo el texto e hipervínculos del índice en negro puro
+%\usepackage[colorlinks=true, allcolors=black]{hyperref}
+
+% --- FORMATO ABSTRACT ---
+\renewenvironment{abstract}{\normalfont\small\itshape\noindent\textbf{\textit{ABSTRACT}}
+}{\vspace{1ex}}
+
+% --- FORMATO KEYWORDS ---
+\renewenvironment{IEEEkeywords}{\normalfont\small\noindent\textbf{\textit{PALABRAS CLAVE}}
+}{}
+
+% --- FORMATO TITULOS ---
+\renewcommand{\thesection}{\arabic{section}.}
+\renewcommand{\thesubsection}{\thesection\arabic{subsection}.}
+
+% Formato para \section
+\titleformat{\section}
+  {\normalfont\Large\bfseries\color{black}} % Estilo (tamaño, peso, color)
+  {\thesection} % Etiqueta/Número
+  {0.5em} % Espacio entre el número y el título
+  {\MakeUppercase} % Código previo al título
+
+% Formato para \subsection
+\titleformat{\subsection}
+  {\normalfont\normalsize\bfseries\color{black}}
+  {\thesubsection} % Etiqueta/Número
+  {0.5em} % Espacio
+  {\MakeUppercase}
+
+% --- DOCUMENT ---
+\begin{document}
+
+\title{ INGENIERÍA ELECTRÓNICA \\ 
+        PROYECTO FINAL \\
+        ELECTROBISTURÍ}
+\author{Alejandro Eirea \and
+        Marcos Linardi \and
+        Ignacio Mehle \and
+        Ezequiel Muñoa}
+\maketitle
+
+\begin{abstract}
+El proyecto consiste en la fabricación de un equipo de electrocirugía de fabricación nacional diseñado para realizar cortes y coagulación de tejidos blandos mediante corriente de alta frecuencia. Opera en modos monopolar y bipolar, adaptándose a procedimientos de baja y mediana complejidad. En modo monopolar, el equipo genera una corriente que atraviesa el cuerpo del paciente desde el electrodo activo hasta la placa de retorno, permitiendo cortes precisos (modo puro). En modo bipolar, la corriente circula entre dos polos ubicados en la misma pinza, sin requerir placa, lo que reduce el riesgo de quemaduras y es ideal para zonas delicadas.
+El Electrobisturí ofrece una potencia de hasta 200W en corte monopolar y 100W en coagulación monopolar y 50W en los demás modos bipolar, controladas automáticamente según la impedancia del tejido, lo que optimiza el desempeño y minimiza el daño térmico. Su interfaz de pantalla táctil facilita el uso en entornos clínicos. Incluye sistemas de seguridad activa, como alarmas por falla de placa y bloqueo de potencia, lo que garantiza la protección del paciente. Su diseño está orientado a especialidades como dermatología,  veterinaria y cirugía en general, donde se requiere precisión, confiabilidad y bajo costo operativo. Al ser un equipo utilizado en medicina, el equipo se diseñará teniendo en cuenta las normas de seguridad para equipos electromédicos  IRAM 4220-1-1 y 4220-1-2.
+\end{abstract}
+
+\begin{IEEEkeywords}
+RADIOFRECUENCIA, AMPLIFICADOR RF, MONOPOLAR, BIPOLAR, CORTE, COAGULACIÓN.
+\end{IEEEkeywords}
+
+% Indice
+\tableofcontents
+
+% Forzar pagestyle fancy
+\pagestyle{fancy}
+\thispagestyle{IEEEtitlepagestyle}
+
+\section{INTRODUCCIÓN}
+La electrocirugía se basa en el calentamiento rápido del tejido a tratar, valiéndose de una corriente de alta frecuencia, para lograr un efecto de corte, coagulación o ambos a la vez. Cuando un delgado electrodo hace contacto en una pequeña área con el tejido, una corriente fluye sobre el mismo produciendo una sobre-elevación de temperatura casi instantánea debido a la alta densidad de corriente. Como sabemos, la conducción eléctrica en los metales es debida a los electrones, en tanto en el tejido, el transporte de cargas está dado por los iones intra y extracelulares. De manera que, si una corriente eléctrica de alta frecuencia, suficientemente intensa, circula por las células en contacto con una pequeña área de electrodo, ocasiona un fuerte movimiento de iones que friccionan y colisionan entre sí, produciendo el calentamiento a niveles tan elevados como para alcanzar la vaporización del agua de la célula, razón por la cual la misma es destruida.
+
+\section{APLICACIÓN}
+El Electrobisturí transforma la energía eléctrica de la red de suministro en una corriente de alta frecuencia. Esta corriente de alta frecuencia se transporta a través de un electrodo activo. En el lugar de aplicación de este electrodo, se produce dentro del tejido, en el área cercana de este punto de contacto, una alta concentración de líneas de flujo y por lo tanto una alta densidad de corriente. Gracias a esta elevada concentración de cargas en esta superficie tan pequeña se provoca en la zona del electrodo activo el corte electroquirúrgico. La circulación de corriente alterna provoca la vibración de las moléculas de agua presente en el citoplasma de las células. Esta agitación a su vez ocasiona que en el interior de las células que forman el tejido se genere vapor y por consiguiente que la membrana plasmática de la célula termine por romperse debido a la presión del vapor en su interior.
+Las cargas que ingresan al paciente a través del electrodo activo circulan por el cuerpo hasta llegar a un electrodo de retorno (también llamado dispersivo) con una gran superficie, donde la concentración de cargas disminuye considerablemente. De esta manera, no se produce ningún efecto térmico en la zona del electrodo de retorno adaptado al cuerpo. El circuito se cierra a través del cable de línea del electrodo de retorno en el transformador de aislación de salida. Este sistema de funcionamiento del equipo, se denomina modo  MONOPOLAR. En cambio, el modo de funcionamiento BIPOLAR, los dos polos se encuentran en una misma pinza y por ende, la circulación de corriente se produce al entrar en contacto dichos puntos.
+
+\subsection{ELECCIÓN DE LA FRECUENCIA DE TRABAJO}
+Las corrientes de baja frecuencia, como los 50Hz o 60Hz de línea, provocan en los nervios y células musculares un efecto de irritación y estimulación. Esto se debe a que a frecuencias por debajo de 100Hz, se produce una estimulación del intercambio normal de iones de los tejidos que es el responsable de la conducción fisiológica de estímulos, que en el caso de corrientes indeseables son las que producen una crispación de la musculatura que pueden provocar extrasístoles y fibrilaciones ventriculares.
+Las corrientes de baja frecuencia provocan un impulso de estimulación agresivo. En corrientes de alta frecuencia mayores a 200 KHz, el sistema fisiológico ya no puede seguir al impulso de estimulación con lo que sucede una insensibilidad frente al estímulo y solo se genera calor.
+De esta manera, definimos trabajar en el proyecto  con una frecuencia de 500 KHz
+
+\subsection{MODELO ELÉCTRICO DEL TEJIDO}
+Analizar el comportamiento del tejido biológico a nivel macroscópico, permite establecer una mejor comprensión del comportamiento del tejido humano ante la aplicación de corriente eléctrica. Dicho análisis se puede realizar observando en la figura 3 el modelo eléctrico simplificado del tejido a nivel macroscópico.
+
+Este análisis resulta del siguiente modelo eléctrico indicado en la figura 4:
+
+Donde rE representa la resistencia eléctrica por unidad de área de la epidermis, cuyo valor aproximado es de
+100k$\Omega$/cm2, cE representa la capacitancia por unidad de área de la epidermis, cuyo valor oscila entre 0,8 a 3nF/ cm2; y rD representa la resistencia eléctrica por unidad de área de la dermis, cuyo valor oscila entre 300 a 500 $\Omega$/cm2.
+Las impedancias de los puntos de entrada (O, piel) y salida (P, piel) del cuerpo humano, presentan por lo tanto una parte resistiva y otra capacitiva, mientras que la del interior del cuerpo humano (rD) es prácticamente resistiva.
+A altas frecuencias el comportamiento del tejido es
+mayormente resistivo, debido a que la reactancia capacitiva XCE, tiende a disminuir considerablemente. Y por tal motivo el valor de impedancia del tejido se puede aproximar a rD.
+El valor de impedancia del tejido puede depender de
+factores como el grosor de la piel, la humedad de la piel, o del contenido graso y de fibras musculares del tejido. Por lo tanto, es sumamente complejo determinar con exactitud su valor. De la información proporcionada por la bibliografía y por la norma, se concluye que el valor de rD puede variar entre los 20 $\Omega$ y los 500 $\Omega$.
+
+\subsection{ESPECIFICACIONES}
+Existen en el mercado varios modelos de estos equipos de electrocirugía con una amplia variedad de potencia e interfaz. Sin embargo, nuestro Electrobisturí reemplaza a tecnología nacional existente, ya que integra todos los modos de operación más utilizados en ámbitos clínicos, utilizando una interfaz táctil que facilita su operación, con un rango de variación de potencia que permite operar en diversos casos clínicos,  además de un bajo costo y alta durabilidad. 
+
+Antes de determinar la frecuencia y características de trabajo del equipo, se tuvieron en cuenta las señales que manejan los equipos de electrocirugía en diversos modos, como ser: corte puro, hemostasis y coagulación. La siguiente figura 5 detalla lo mencionado anteriormente.
+
+Dentro del marco normativo que se analizó se pudieron
+obtener ciertas especificaciones de interés para el diseño del proyecto. Concretamente se define que el equipo de electrocirugía por RF va a trabajar dentro de los siguientes rangos:
+
+\begin{itemize}
+    \item Frecuencia: 500 kHz
+    \item Potencia en corte monopolar: 200 W
+    \item Potencia en coagulación monopolar: 100 W
+    \item Potencia en corte bipolar: 100  W
+    \item Potencia en coagulación bipolar: 100  W
+    \item Impedancia de salida del tejido: 500 $\Omega$
+\end{itemize}
+
+\section{MÓDULOS DE HARDWARE}
+\subsection{OSCILADOR RF}
+Para esta etapa se seleccionó un oscilador DDS para obtener una señal cuadrada de 500 KHz. La figura 6 muestra el esquemático del oscilador y en la figura 7 podemos observar en el osciloscopio las señales obtenidas.
+
+\subsection{DRIVER}
+Esta etapa será la encargada de suministrar las señales del oscilador al puente H para conmutar los mosfet de la etapa de potencia en clase D, estará formada por CI TC4424  un transformador de pulsos diseño de acuerdo a las necesidades y componentes del proyecto.
+
+\subsection{AMPLIFICADOR - PUENTE H}
+Se realizará un amplificador clase D inductivo, configurado como fuente de corriente, y se seleccionarán los mosfets adecuados según la potencia establecida por el proyecto para armar el puente H que alimente el circuito de acoplamiento (transformador sintonizado). El mismo será alimentado por una tensión de Vcc = 70 - 140  V.
+
+\subsection{TRANSFORMADOR SINTONIZADO}
+En la etapa de acoplamiento, se diseñará un transformador sintonizado a 500 KHz con los parámetros necesarios para obtener a la salida del mismo las tensiones especificadas para realizar corte puro y coagulación. Además, al tener en esta etapa un transformador, nos permitirá tener una aislación galvánica entre el equipo y el paciente.
+
+\subsection{FUENTES}
+Se diseñarán dos topologías de fuentes:
+
+\begin{itemize}
+    \item Half Bridge: para alimentar la etapa de potencia del amplificador con Vcc = 70 - 140 V.
+
+    \item Flyback: para alimentar circuitos auxiliares de 24V y mediante la utilización de reguladores de tensión, obtendremos tensiones 12V,  5V y 3,3V.
+\end{itemize}
+
+\subsection{CIRCUITO DE CONTROL}
+El circuito de control estará formado por un microcontrolador, que será el encargado de recibir el sensado de tensión y corriente del equipo, mostrar todos los datos, realizar el control para los modos de funcionamiento y variar la potencia a través de una pantalla táctil de 5” como HMI.
+
+\subsection{ELECTRODOS}
+Para operar en modo monopolar, se utilizará un electrodo activo y una placa de retorno como lo muestran las figuras 11 y 12. 
+En cambio, en modo bipolar se utiliza una pinza de dos polos.
+
+\section{DIAGRAMA EN BLOQUES}
+
+\section{ESTIMACIÓN DE COSTOS}
+
+\section{RECURSOS DISPONIBLES}
+
+\section{DIAGRAMA DE TAREAS Y TIEMPOS (GANTT)}
+
+\section{ANÁLISIS DE MERCADO}
+Teniendo en cuenta las características técnicas de nuestro proyecto, se realizó una búsqueda de equipos similares y de distintas prestaciones en el mercado local para poder realizar una comparativa de equipos. Ver ANEXO D.
+
+\subsection{VENTAJAS COMPARATIVAS}
+Comparando los equipos analizados, podemos evidenciar las diferencia que nuestro proyecto ofrece en tanto precio-calidad con respecto a los otros:
+
+\begin{itemize}
+    \item Precio: es el más accesible de todos,  ideal para instituciones con presupuesto limitado.
+    \item Origen: como todos los equipos analizados, está construido con materiales que se consiguen a nivel nacional. Facilitando repuestos, servicio técnico y soporte local.
+    \item Modos de operación: ofrece modos esenciales: Corte Monopolar y Coagulación Monopolar Normal, suficientes para aplicaciones comunes.
+    \item Potencia corte monopolar: con 200W, supera a la mayoría (CUTTER 50: 50W, ART E1: 50W, Labris: 180W). Solo es superado por Kairos MX1 (400W).
+    \item Potencia coagulación  monopolar: 100W, muy competitiva (sólo superada por Kairos y Labris).
+    \item Potencia Bipolar (Corte/Coagulación): 100W en ambos modos, igual o superior a los demás. Ej.: Kairos: 100W/120W, Labris: 50W/45W.
+    \item Interfaz: pantalla táctil de 5”, más moderna e intuitiva que perillas o displays alfanuméricos.
+    \item Seguridad: sistema de alarma con bloqueo de potencia y detección de placa paciente, comparable al sistema CQM o R.E.M. de equipos más caros.
+    \item Aplicaciones: aunque limitado a dermatología y veterinaria, es ideal para clínicas estéticas o veterinarias pequeñas. Esto lo vuelve muy específico y rentable en su nicho.
+    \item Control de Potencia: ofrece control automático y manual según impedancia, algo que incluso el ART E1 no tiene (es solo manual). Se iguala a equipos que valen 3 a 5 veces más.
+\end{itemize}
+
+El LEMM-200 se posiciona como una opción de excelente relación costo-beneficio. Es ideal para:
+\begin{itemize}
+    \item Clínicas dermatologicas
+    \item Consultorios veterinarios
+    \item Centros de estética
+    \item Instituciones que no requieran modos avanzados como spray, coagulación bipolar delicada o multi-disciplinas quirúrgicas complejas
+\end{itemize}
+
+%\bibliographystyle{IEEEtran}
+%\bibliography{referencias} % Nombre de tu archivo .bib 
+
+\end{document}
